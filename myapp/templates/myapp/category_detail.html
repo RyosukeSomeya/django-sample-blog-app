@@ -1,0 +1,16 @@
+
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-md-9 mb-4">
+        <h2 class="mb-4">{{ object.name }}</h2>
+        <ul class="list_group">
+            {% for item in category_posts %}
+            <li class="list-group-item"><a href="{% url 'myapp:post_detail' item.id %}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
