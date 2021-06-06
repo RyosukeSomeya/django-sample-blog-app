@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'myapp',
     'django.contrib.sites',
     'sitemanage',
-    'storages'
+    'storages',
 ]
 
 SITE_ID = 1
@@ -135,7 +135,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CahceControl': 'max-age=86400',
 }
 
-AWS_LOCATION = 'media'
+AWS_LOCATION = 'static'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
