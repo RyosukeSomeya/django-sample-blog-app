@@ -132,7 +132,7 @@ LOGIN_REDIRECT_URL = 'myapp:index'
 AWS_STORAGE_BUCKET_NAME = "dev-django-sample01"
 AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
-    'CahceControl': 'max-age=86400',
+    'CacheControl': 'max-age=86400',
 }
 
 AWS_LOCATION = 'media'
