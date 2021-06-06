@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'myapp',
     'django.contrib.sites',
     'sitemanage',
+    'storages'
 ]
 
 SITE_ID = 1
@@ -127,8 +128,15 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'myapp:login'
 LOGIN_REDIRECT_URL = 'myapp:index'
 
+#S3セッティング
+AWS_LOCATION = 'media'
+DEFAUTLT_FILE_STRAGE = 'storages.backends.s3boto3.s3BotoStorage'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+if not DEBUG:
+    MEDIA_URL = "https://%s/%s" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+else:
+    MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -156,3 +164,5 @@ except ImportError:
 
 if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
