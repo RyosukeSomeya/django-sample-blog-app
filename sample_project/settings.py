@@ -128,8 +128,6 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'myapp:login'
 LOGIN_REDIRECT_URL = 'myapp:index'
 
-DEBUG = False
-
 #S3セッティング
 AWS_STRAGE_BUCKET_NAME = "dev-django-sample01"
 AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STRAGE_BUCKET_NAME
@@ -137,12 +135,11 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CahceControl': 'max-age=86400',
 }
 
-
 AWS_LOCATION = 'media'
 DEFAUTLT_FILE_STRAGE = 'storages.backends.s3boto3.s3BotoStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = "https://%s/%s" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 # MEDIA_URL = '/media/'
 
 # Default primary key field type
@@ -161,6 +158,8 @@ ALLOWED_HOSTS = ['*']
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DEBUG = False
 
 try:
     from .local_settings import *
