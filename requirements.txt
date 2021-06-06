@@ -9,7 +9,7 @@ idna==2.8
 Pillow==5.4.1
 psycopg2-binary==2.8.2
 pytz==2020.1
-requests==2.21.0
+requests==2.25.1
 setuptools==49.2.0
 sqlparse==0.3.1
 static3==0.7.0
