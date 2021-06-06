@@ -136,7 +136,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 AWS_LOCATION = 'media'
-DEFAUTLT_FILE_STRAGE = 'storages.backends.s3boto3.s3BotoStorage'
+DEFAUTLT_FILE_STRAGE = 'storages.backends.s3boto3.S3BotoStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
