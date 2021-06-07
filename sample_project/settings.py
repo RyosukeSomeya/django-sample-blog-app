@@ -148,14 +148,14 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEBUG = True
+DEBUG = False
 
 try:
     from .local_settings import *
 except ImportError:
     pass
 
-if DEBUG:
+if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
