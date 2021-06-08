@@ -7,4 +7,4 @@ URL: https://dev-django-sample01.herokuapp.com/
 - python 3.7.10
 - インフラ heroku
 - 外部ストレージ Amazon S3
-
+- Material Design for Bootstrap v5 & v4
