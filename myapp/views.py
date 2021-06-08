@@ -26,7 +26,7 @@ class Index(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        post_list = Post.objects.all().order_by('-created_at')
+        post_list = Post.objects.all().order_by('-created_at')[:6]
         context = {
             'post_list': post_list
         }
@@ -143,15 +143,16 @@ class CategoryDetail(DetailView):
 
 
 def Search(request):
-    if request.method == 'POST':
+    if request.method == 'POST' or 'page' in request.GET:
         searchform = SearchForm(request.POST)
-
         if searchform.is_valid():
             freeword = searchform.cleaned_data['freeword']
             search_list = Post.objects.filter(Q(title__icontains = freeword) | Q(content__icontains = freeword))
-
+            paginator = Paginator(search_list, 5)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
             params = {
-                'search_list': search_list,
+                'page_obj': page_obj,
             }
 
-            return render (request, 'myapp/search.html', params)
+        return render(request, 'myapp/search.html', params)
